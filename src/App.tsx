@@ -96,34 +96,34 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-black/5">
-      <div className="text-xl font-bold tracking-tighter">
-        <span>BILAL</span>
+    <nav className="fixed top-4 left-4 right-4 max-w-5xl mx-auto z-50 px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-md border border-slate-200 shadow-sm rounded-full transition-all">
+      <div className="text-xl font-bold tracking-tighter text-slate-900">
+        <span>BILAL ANWAR</span>
       </div>
       
-      <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-black/60">
-        <a href="#work" className="hover:text-black transition-colors">Work</a>
-        <a href="#services" className="hover:text-black transition-colors">Services</a>
-        <a href="#about" className="hover:text-black transition-colors">About</a>
-        <a href="#contact" className="hover:text-black transition-colors">Contact</a>
+      <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-slate-600">
+        <a href="#work" className="hover:text-slate-900 transition-colors duration-300">Work</a>
+        <a href="#services" className="hover:text-slate-900 transition-colors duration-300">Services</a>
+        <a href="#about" className="hover:text-slate-900 transition-colors duration-300">About</a>
+        <a href="#contact" className="hover:text-slate-900 transition-colors duration-300">Contact</a>
       </div>
 
-      <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+      <button className="md:hidden text-slate-900" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <X /> : <Menu />}
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white border-b border-black/5 p-6 flex flex-col gap-4 md:hidden"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            className="absolute top-full mt-4 left-0 w-full bg-white border border-slate-200 rounded-2xl shadow-xl p-6 flex flex-col gap-4 md:hidden"
           >
-            <a href="#work" onClick={() => setIsOpen(false)} className="text-lg font-medium">Work</a>
-            <a href="#services" onClick={() => setIsOpen(false)} className="text-lg font-medium">Services</a>
-            <a href="#about" onClick={() => setIsOpen(false)} className="text-lg font-medium">About</a>
-            <a href="#contact" onClick={() => setIsOpen(false)} className="text-lg font-medium">Contact</a>
+            <a href="#work" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-700 hover:text-indigo-600 transition-colors">Work</a>
+            <a href="#services" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-700 hover:text-indigo-600 transition-colors">Services</a>
+            <a href="#about" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-700 hover:text-indigo-600 transition-colors">About</a>
+            <a href="#contact" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-700 hover:text-indigo-600 transition-colors">Contact</a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -135,32 +135,34 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center px-6 md:px-24 pt-20">
       <motion.div
+        className="max-w-6xl mx-auto w-full"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <span className="text-xs font-bold uppercase tracking-[0.3em] text-black/40 mb-6 block">
+        <span className="text-xs font-bold uppercase tracking-[0.3em] text-indigo-600 mb-6 block">
           AI Automation Specialist
         </span>
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] mb-8">
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-slate-900 leading-[0.85] mb-8">
           I BUILD <br />
           AUTOMATED <br />
           SYSTEMS.
         </h1>
-        <p className="max-w-xl text-lg md:text-xl text-black/60 leading-relaxed mb-10">
+        <p className="max-w-xl text-lg md:text-xl text-slate-600 leading-relaxed mb-10">
           I help agencies and enterprises scale their operations by integrating cutting-edge 
           AI agents and automated workflows. Less manual work, more impact.
         </p>
         <div className="flex flex-wrap gap-4">
           <a 
             href="#work" 
-            className="px-8 py-4 bg-black text-white rounded-full font-medium flex items-center gap-2 hover:scale-105 transition-transform"
+            className="px-8 py-4 bg-indigo-600 text-white rounded-full font-medium flex items-center gap-2 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
           >
             View Projects <ArrowRight className="w-4 h-4" />
           </a>
           <a 
-            href="#" 
-            className="px-8 py-4 border border-black/10 rounded-full font-medium hover:bg-black/5 transition-colors flex items-center gap-2"
+            href="/Bilal_Anwar_CV.pdf" 
+            download
+            className="px-8 py-4 bg-white border border-slate-200 text-slate-900 rounded-full font-medium hover:border-slate-300 hover:bg-slate-50 transition-all duration-300 flex items-center gap-2"
           >
             Download CV <ArrowRight className="w-4 h-4 rotate-90" />
           </a>
@@ -172,42 +174,42 @@ const Hero = () => {
 
 const HorizontalGallery = () => {
   return (
-    <section id="work" className="py-24 bg-zinc-50 overflow-hidden">
-      <div className="px-6 md:px-24 mb-12">
-        <h2 className="text-4xl font-bold tracking-tight mb-2">Selected Work</h2>
-        <p className="text-black/40 uppercase text-xs font-bold tracking-widest">Case Studies & Experiments</p>
+    <section id="work" className="py-24 bg-slate-50 overflow-hidden">
+      <div className="px-6 md:px-24 mb-12 max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold tracking-tight text-slate-900 mb-2">Selected Work</h2>
+        <p className="text-slate-500 uppercase text-xs font-bold tracking-widest">Case Studies & Experiments</p>
       </div>
       
       <div className="flex overflow-x-auto gap-8 px-6 md:px-24 pb-12 no-scrollbar snap-x snap-mandatory">
         {PROJECTS.map((project) => (
           <motion.div 
             key={project.id}
-            whileHover={{ y: -10 }}
-            className="flex-shrink-0 w-[85vw] md:w-[450px] snap-center"
+            whileHover={{ y: -8 }}
+            className="flex-shrink-0 w-[85vw] md:w-[450px] snap-center transition-all duration-300"
           >
-            <div className="aspect-[4/5] bg-white rounded-3xl overflow-hidden border border-black/5 shadow-sm group relative">
+            <div className="aspect-[4/5] bg-white rounded-3xl overflow-hidden border border-slate-200/50 shadow-sm group relative">
               <img 
                 src={project.image} 
                 alt={project.title}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
-                <span className="text-xs font-bold uppercase tracking-widest mb-2 text-white/60">{project.category}</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                <span className="text-xs font-bold uppercase tracking-widest mb-2 text-indigo-400">{project.category}</span>
                 <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map(tag => (
-                    <span key={tag} className="text-[10px] px-2 py-1 bg-white/20 rounded-full backdrop-blur-sm">{tag}</span>
+                    <span key={tag} className="text-[10px] px-2 py-1 bg-white/10 rounded-full backdrop-blur-md border border-white/20">{tag}</span>
                   ))}
                 </div>
-                <a href={project.link} className="flex items-center gap-2 text-sm font-medium hover:underline">
+                <a href={project.link} className="flex items-center gap-2 text-sm font-medium hover:text-indigo-300 transition-colors">
                   Case Study <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
             </div>
             <div className="mt-6">
-              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-              <p className="text-black/60 text-sm leading-relaxed line-clamp-2">{project.description}</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">{project.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">{project.description}</p>
             </div>
           </motion.div>
         ))}
@@ -219,10 +221,10 @@ const HorizontalGallery = () => {
 const Services = () => {
   return (
     <section id="services" className="py-24 px-6 md:px-24">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
         <div className="md:col-span-1">
-          <h2 className="text-4xl font-bold tracking-tight mb-6">How I help <br />agencies grow.</h2>
-          <p className="text-black/60 leading-relaxed">
+          <h2 className="text-4xl font-bold tracking-tight text-slate-900 mb-6">How I help <br />agencies grow.</h2>
+          <p className="text-slate-600 leading-relaxed">
             I don't just build bots. I build systems that integrate deeply with your existing business processes to drive measurable results.
           </p>
         </div>
@@ -234,13 +236,13 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-8 bg-zinc-50 rounded-3xl border border-black/5 hover:border-black/20 transition-colors"
+              className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-100 transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-6">
+              <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shadow-sm mb-6">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-black/60 text-sm leading-relaxed">{service.description}</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">{service.description}</p>
             </motion.div>
           ))}
         </div>
@@ -251,15 +253,16 @@ const Services = () => {
 
 const About = () => {
   return (
-    <section id="about" className="py-24 px-6 md:px-24 bg-black text-white">
-      <div className="max-w-4xl">
-        <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/40 mb-8 block">About Me</span>
+    <section id="about" className="py-24 px-6 md:px-24 bg-slate-900 text-white rounded-[2.5rem] md:rounded-[4rem] mx-4 md:mx-auto max-w-7xl overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+      <div className="max-w-4xl mx-auto relative z-10">
+        <span className="text-xs font-bold uppercase tracking-[0.3em] text-indigo-400 mb-8 block">About Me</span>
         <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight mb-12">
-          I bridge the gap between <span className="text-white/40 italic">raw technology</span> and <span className="text-white/40 italic">business reality</span>.
+          I bridge the gap between <span className="text-indigo-300 italic">raw technology</span> and <span className="text-indigo-300 italic">business reality</span>.
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg text-white/60 leading-relaxed">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg text-slate-300 leading-relaxed">
           <p>
-            With a background in software engineering and a passion for operational efficiency, I've spent the last 3 years mastering the AI landscape. I specialize in turning complex LLM capabilities into simple, reliable tools for non-technical teams.
+            With a profound passion for AI and LLMs, I've spent the last 3 years mastering the AI landscape. I specialize in turning complex LLM capabilities into simple, reliable tools for non-technical teams.
           </p>
           <p>
             My approach is simple: identify the bottleneck, automate the repetitive, and empower the human. I believe AI shouldn't replace people, but give them superpowers to focus on what truly matters.
@@ -273,23 +276,23 @@ const About = () => {
 const Contact = () => {
   return (
     <section id="contact" className="py-24 px-6 md:px-24 flex flex-col items-center text-center">
-      <div className="max-w-2xl">
-        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8">Ready to automate?</h2>
-        <p className="text-xl text-black/60 mb-12">
+      <div className="max-w-2xl mx-auto">
+        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-slate-900 mb-8">Ready to automate?</h2>
+        <p className="text-xl text-slate-600 mb-12">
           I'm currently open to new projects and agency partnerships. Let's build something that scales.
         </p>
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <a 
-            href="mailto:hello@example.com" 
-            className="w-full sm:w-auto px-12 py-5 bg-black text-white rounded-full font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-3"
+            href="mailto:bilaalautomates@gmail.com" 
+            className="w-full sm:w-auto px-12 py-5 bg-indigo-600 text-white rounded-full font-bold text-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
           >
             <Mail className="w-5 h-5" /> Say Hello
           </a>
           <div className="flex gap-4">
-            <a href="#" className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center hover:bg-zinc-50 transition-colors">
+            <a href="https://github.com/lokiinloops" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center hover:bg-slate-50 hover:text-indigo-600 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
               <Github className="w-6 h-6" />
             </a>
-            <a href="#" className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center hover:bg-zinc-50 transition-colors">
+            <a href="https://www.linkedin.com/in/bilalanwar2003/" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center hover:bg-slate-50 hover:text-indigo-600 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
               <Linkedin className="w-6 h-6" />
             </a>
           </div>
@@ -301,14 +304,15 @@ const Contact = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-6 md:px-24 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div className="text-sm font-medium text-black/40">
-        © 2026 BILAL — Built with precision.
-      </div>
-      <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-black/40">
-        <a href="#" className="hover:text-black transition-colors">Twitter</a>
-        <a href="#" className="hover:text-black transition-colors">GitHub</a>
-        <a href="#" className="hover:text-black transition-colors">LinkedIn</a>
+    <footer className="py-12 px-6 md:px-24 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="text-sm font-medium text-slate-500">
+          © {new Date().getFullYear()} BILAL ANWAR — Built with precision.
+        </div>
+        <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-500">
+          <a href="https://github.com/lokiinloops" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors duration-300">GitHub</a>
+          <a href="https://www.linkedin.com/in/bilalanwar2003/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors duration-300">LinkedIn</a>
+        </div>
       </div>
     </footer>
   );
@@ -316,7 +320,7 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white font-sans text-black selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-[#FAFAFA] font-sans text-slate-900 selection:bg-indigo-600 selection:text-white">
       <Navbar />
       <main>
         <Hero />
