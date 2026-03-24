@@ -43,6 +43,15 @@ const PROJECTS: Project[] = [
     image: "/revenue_automation_preview.png",
     tags: ["Python", "Data Analysis", "JSON", "CSV"],
     link: "https://github.com/lokiinloops/revenue-automation"
+  },
+  {
+    id: 6,
+    title: "Invoice Processing & Data Extraction",
+    category: "Business Automation",
+    description: "Automated system extracting data from text files, validating information, and generating professional reports. Processes invoices in seconds, eliminating data entry errors and flagging overdue payments automatically.",
+    image: "/invoice_automation_preview.png",
+    tags: ["Python", "JSON", "Text Parsing", "Automation"],
+    link: "https://github.com/lokiinloops/invoice_automation"
   }
 ];
 
