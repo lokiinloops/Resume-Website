@@ -14,6 +14,7 @@ import {
   Mail, 
   ExternalLink, 
   ChevronRight,
+  ChevronLeft,
   Menu,
   X,
   Layers,
@@ -35,40 +36,13 @@ interface Project {
 // --- Mock Data ---
 const PROJECTS: Project[] = [
   {
-    id: 1,
-    title: "Autonomous Customer Support",
-    category: "LLM Integration",
-    description: "Built a multi-agent system using LangChain that handles 80% of routine support tickets with 95% accuracy.",
-    image: "https://picsum.photos/seed/ai1/800/600",
-    tags: ["OpenAI", "Python", "LangChain", "Redis"],
-    link: "#"
-  },
-  {
-    id: 2,
-    title: "Supply Chain Optimizer",
-    category: "Workflow Automation",
-    description: "Automated inventory tracking and predictive ordering for a mid-sized logistics firm, reducing waste by 22%.",
-    image: "https://picsum.photos/seed/ai2/800/600",
-    tags: ["Make.com", "Airtable", "GPT-4o", "Stripe"],
-    link: "#"
-  },
-  {
-    id: 3,
-    title: "Content Engine v2",
-    category: "Generative AI",
-    description: "A custom pipeline that transforms raw research into multi-channel marketing assets in seconds.",
-    image: "https://picsum.photos/seed/ai3/800/600",
-    tags: ["Anthropic", "Node.js", "Vercel", "Tailwind"],
-    link: "#"
-  },
-  {
-    id: 4,
-    title: "Lead Gen Automator",
-    category: "Sales Tech",
-    description: "End-to-end lead enrichment and personalized outreach system scaling from 0 to 10k leads monthly.",
-    image: "https://picsum.photos/seed/ai4/800/600",
-    tags: ["n8n", "Clay", "Apollo", "Instantly"],
-    link: "#"
+    id: 5,
+    title: "Revenue Data Automation",
+    category: "Data Automation",
+    description: "Python script that automates revenue data validation, error detection, and report generation. Reduces manual financial data processing from 2-3 hours to 30 seconds with zero errors.",
+    image: "/revenue_automation_preview.png",
+    tags: ["Python", "Data Analysis", "JSON", "CSV"],
+    link: "https://github.com/lokiinloops/revenue-automation"
   }
 ];
 
@@ -173,14 +147,42 @@ const Hero = () => {
 };
 
 const HorizontalGallery = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const slide = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === 'left' ? -420 : 420;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="work" className="py-24 bg-slate-50 overflow-hidden">
-      <div className="px-6 md:px-24 mb-12 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold tracking-tight text-slate-900 mb-2">Selected Work</h2>
-        <p className="text-slate-500 uppercase text-xs font-bold tracking-widest">Case Studies & Experiments</p>
+      <div className="px-6 md:px-24 mb-12 max-w-6xl mx-auto flex justify-between items-end">
+        <div>
+          <h2 className="text-4xl font-bold tracking-tight text-slate-900 mb-2">Selected Work</h2>
+          <p className="text-slate-500 uppercase text-xs font-bold tracking-widest">Case Studies & Experiments</p>
+        </div>
+        <div className="hidden md:flex gap-3">
+          <button 
+            onClick={() => slide('left')}
+            className="w-12 h-12 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200 hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button 
+            onClick={() => slide('right')}
+            className="w-12 h-12 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200 hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
       </div>
       
-      <div className="flex overflow-x-auto gap-8 px-6 md:px-24 pb-12 no-scrollbar snap-x snap-mandatory">
+      <div 
+        ref={scrollRef}
+        className="flex overflow-x-auto gap-8 px-6 md:px-24 pb-12 no-scrollbar snap-x snap-mandatory scroll-smooth"
+      >
         {PROJECTS.map((project) => (
           <motion.div 
             key={project.id}
@@ -209,7 +211,7 @@ const HorizontalGallery = () => {
             </div>
             <div className="mt-6">
               <h3 className="text-xl font-bold text-slate-900 mb-2">{project.title}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">{project.description}</p>
+              <p className="text-slate-600 text-sm leading-relaxed">{project.description}</p>
             </div>
           </motion.div>
         ))}
