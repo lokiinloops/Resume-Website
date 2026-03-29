@@ -143,7 +143,7 @@ const Hero = () => {
             View Projects <ArrowRight className="w-4 h-4" />
           </a>
           <a 
-            href="/Bilal_Anwar_CV.pdf" 
+            href="/Bilal_Anwar_Resume.pdf" 
             download
             className="px-8 py-4 bg-white border border-slate-200 text-slate-900 rounded-full font-medium hover:border-slate-300 hover:bg-slate-50 transition-all duration-300 flex items-center gap-2"
           >
